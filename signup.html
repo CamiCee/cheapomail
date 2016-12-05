@@ -1,0 +1,24 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Adding A User </title>
+        <script src="user.js" type="text/javascript"> </script>
+    </head>
+    
+    <body>
+        <form action="user.php" onsubmit="return (validateForm());" method="post">
+            
+            First Name: <input type="text" name="firstname" id="firstname" placeholder="eg. Mary" required />
+            <br><br>
+            Last Name: <input type="text" name="lastname" id="lastname" placeholder="eg. Jane" required />
+            <br><br>
+            Username: <input type="text" name="username" id="username" placeholder="eg. MJ4Ever" required/>
+            <br><br>
+            Password: <input type="password" name="password" id="password" placeholder="eg. Passw0rd!" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required />
+			<br> <br>
+            
+            <button id="submitBtn">Submit</button>
+        </form>
+        <div id="result"></div>
+    </body>
+</html>
