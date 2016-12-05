@@ -1,0 +1,25 @@
+.sender
+{
+    width:80px;
+    margin: 20px;
+    color:blue;
+}
+
+#container
+{
+    border: 2px solid black;
+    display: inline-block;
+}
+
+.msg
+{
+    background-color: transparent;
+    border:none;
+}
+
+
+#result_style #result
+{
+    border: 2px solid black;
+}
+
