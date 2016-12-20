@@ -35,7 +35,7 @@
         $userMsg=$conn->query("SELECT * FROM Message WHERE recipient_ids LIKE '%$currID%'");
         $userMsg=$userMsg->fetchAll(PDO::FETCH_ASSOC);
         echo"<link rel='stylesheet' href='style.css' media='screen' />
-             <script src='view.js' charset='utf-8'></script>";
+             <script src='view.js' type='text/javascript'></script>";
         foreach ($userMsg as $value)
         {
             $time=$value['date_sent'];
@@ -72,7 +72,7 @@
                          </table>";
                     }
                 }
-                echo "<script>
+                /*echo "<script>
                       var httpRequest;
                       var sb=document.querySelectorAll('.msg');
                        for (var i=0;i<sb.length;i++)
@@ -91,7 +91,7 @@
             return false;
         });
      }
-                    </script>";
+                    </script>";*/
                     
             }
             
@@ -102,3 +102,45 @@
         echo "noo";
     }
 ?>
+
+<script>
+     var httpRequest;
+    var sb=document.querySelectorAll(".msg");
+    for (var i=0;i<sb.length;i++)
+    {
+        sb[i].addEventListener("click",function()
+        {
+            httpRequest = new XMLHttpRequest();
+            var url="https://cheapomail-final-cami-cee.c9users.io/inbox.php?msg=";
+            httpRequest.onreadystatechange = View;
+            httpRequest.open('GET', url + encodeURIComponent(this.value));
+            httpRequest.send();
+            //alert("ok");
+            //alert(this.value);
+            return false;
+        });
+     }
+       
+     function View()
+     {
+           if (httpRequest.readyState === XMLHttpRequest.DONE) 
+           {
+                if (httpRequest.status === 200) 
+                {
+                    //alert("ok");
+                    //alert(httpRequest.responseText);
+                    var result = document.getElementById('result');
+                    var response = httpRequest.responseText;
+                    result.innerHTML=response;
+                } 
+                else 
+                {
+                    alert('There was a problem with the request.');
+                }
+           }
+           else
+           {
+              //alert("no");
+           }
+      }
+</script>
